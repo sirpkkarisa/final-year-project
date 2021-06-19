@@ -8,7 +8,7 @@
 	<!-- This is the landing page for the system -->
 	<main>
 		<!-- Login Section -->
-		<section class="login-section">
+		<section class="login-section" hidden="">
 			<!-- Header for the login section -->
 			<header>
 				<!-- Title for the system -->
@@ -31,6 +31,182 @@
 					<a href="#" id="change-pass-btn">Change Password</a>
 				</form>
 			</div>
+		</section>
+		<!-- Admin Section -->
+		<section class="admin-section">
+			<div class="admin-hero">
+				<!-- Header section -->
+				<header>
+					<div>
+						<span>Admin Panel</span>
+						<span id="admin-username">
+							@sirpkkarisa
+						</span>
+					</div>
+					<nav>
+						<ul>
+							<li><a href="#">DASHBOARD</a></li>
+							<li><a href="#add-user">ADD USER</a></li>
+							<li><a href="#create-questions">CREATE QUESTIONS</a></li>
+							<li><a href="#generate-exam">GENERATE EXAM</a></li>
+						</ul>
+					</nav>
+				</header>
+				<div class="summary-section">
+					<div>Graph One</div>
+					<div>Graph Two</div>
+					<div>Graph Three</div>
+					<div>Graph Four</div>
+					<div>Graph Five</div>
+					<div>Graph Six</div>
+					<div>Graph Seven</div>
+					<div>Grapj Eight</div>
+				</div>
+			</div>
+		</section>
+		<!-- Add User section -->
+		<section id="add-user">
+			<form>
+				<div>
+					<input type="text" placeholder="First Name" name="first-name">
+				</div>
+				<div>
+					<input type="text" placeholder="Last Name" name="last-name">
+				</div>
+				<div>
+					<input type="text" placeholder="E-mail" name="email">
+				</div>
+				<div>
+					<input type="text" placeholder="Reg No./Emp No." name="uid">
+				</div>
+				<div class="radio">
+					 Student<input type="radio" name="radio" checked>
+					 Lecturer<input type="radio" name="radio">
+				</div>
+				<div>
+					<button>Submit</button>
+				</div>
+			</form>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>E-mail</th>
+						<th>Type</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Pascal Kazungu</td>
+						<td>pk@gmai.com</td>
+						<td>Lecturer</td>
+						<td>Active</td>
+					</tr>
+					<tr>
+						<td>Pascal Kazungu</td>
+						<td>pk@gmai.com</td>
+						<td>Lecturer</td>
+						<td>Active</td>
+					</tr>
+					<tr>
+						<td>Pascal Kazungu</td>
+						<td>pk@gmai.com</td>
+						<td>Lecturer</td>
+						<td>Active</td>
+					</tr>
+					<tr>
+						<td>Pascal Kazungu</td>
+						<td>pk@gmai.com</td>
+						<td>Lecturer</td>
+						<td>Active</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<section id="create-questions">
+			<h1>Type of Questions</h1>
+			<div class="questions">
+			<div class="ieq">
+				<h4>Information Extraction Questions</h4>
+				<form id="ieq">
+					<div>
+						<input type="text" name="field" placeholder="FIELD">
+					</div>
+					<div>
+						<textarea placeholder="PASSAGE"></textarea>
+					</div>
+					<div>
+						<input type="text" name="question" placeholder="QUESTION">
+					</div>
+					<div>
+						<input type="text" name="responses" placeholder="ANSWERS">
+					</div>
+					<div>
+						<input type="number" name="question-weight" placeholder="QUESTION WEIGHT">
+					</div>
+					<div class="question-btns">
+						<button id="btn-more" class="btn-more">
+							More Area
+						</button>
+						<button type="submit" id="question-submit-btn" class="question-submit-btn">
+							Submit
+						</button>
+					</div>
+				</form>
+			</div>
+			<div class="fq">
+				<h4>Factoid Questions</h4>
+				<form id="fq">
+					<div>
+						<input type="text" name="field" placeholder="FIELD">
+					</div>
+					<div>
+						<textarea placeholder="PASSAGE"></textarea>
+					</div>
+					<div>
+						<input type="text" name="responses" placeholder="ANSWERS">
+					</div>
+					<div>
+						<input type="number" name="question-weight" placeholder="QUESTION WEIGHT">
+					</div>
+					<div class="question-btns">
+						<button id="btn-more" class="btn-more">
+							More Area
+						</button>
+						<button type="submit" id="question-submit-btn" class="question-submit-btn">
+							Submit
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		</section>
+		<section id="generate-exam">
+			<div class="exam-specs">
+			<h1>Exam Specifications</h1>
+			<form id="exam-specification">
+				<div>
+				<input type="text" name="institution-name" placeholder="INSTITUTION NAME">
+				<input type="text" name="degree-name" placeholder="DEGREE NAME">
+				<input type="text" name="year-examined" placeholder="YEAR BEING EXAMINED">
+				<input type="text" name="academic-year" placeholder="ACADEMIC YEAR">
+				<input type="text" name="course-code" placeholder="COURSE CODE">
+				<input type="text" name="duration" placeholder="DURATION">
+				<input type="number" name="num-of-modules" placeholder="NO. OF MODULES">
+				<input type="number" name="module-weight" placeholder="MODULE WEIGHT">
+				<select>
+					<option>Option One</option>
+					<option>Option Two</option>
+					<option>Option Three</option>
+				</select>
+			</div>
+			<div>
+				<button id="preview">Preview</button>
+			</div>
+			</form>
+		</div>
+		<div class="exam-preview"></div>
 		</section>
 	</main>
 </body>

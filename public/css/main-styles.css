@@ -116,3 +116,248 @@ section.login-section a#change-pass-btn {
 	margin-top: 20px;
 	text-align: center;
 }
+
+
+/*
+
+
+ADMIN SECTION STYLING
+
+
+*/
+
+section.admin-section {
+	width: 100%;
+	height: 100vh;
+}
+section.admin-section .admin-hero {
+	height: 100%;
+	height: 100%;
+	background-color: #FAFAFA;
+}
+section.admin-section header {
+	width:100%;
+	height:20%;
+}
+section.admin-section header div {
+	display: flex;
+	justify-content: space-between;
+	height: 50%;
+}
+section.admin-section nav {
+	background-color: #000000;
+	height: 50%;
+}
+section.admin-section ul {
+	width: 100%;
+	height: 100%;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+}
+section.admin-section li {
+	padding: 12px;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+section.admin-section li:hover {
+	background-color: #FFFFFF;
+	padding: 12px;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+section.admin-section a {
+	color: #FFFFFF;
+	text-decoration: none;
+	height: 100%;
+}
+section.admin-section a:hover {
+	color: #000000;
+}
+section.admin-section .summary-section {
+	height: 80%;
+	width: 100%;
+	display: grid;
+	grid-template: repeat(2,1fr) / repeat(4,1fr);
+}
+.summary-section div {
+	background-color: #CCCCCCCC;
+	margin: 10px;
+}
+
+/*
+ADD USER SECTION
+*/
+
+#add-user {
+	height: 80vh;
+	display: flex;
+	justify-content: space-between;
+}
+
+#add-user form {
+	height: 50%;
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+#add-user form  div {
+	width: 90%;
+	height: 15%;
+	border-radius: 5px;
+	border: 1px solid #000000;
+	padding: 2px;
+	margin: 5px;
+}
+#add-user form input {
+	height: 99%;
+	width: 99%;
+	text-align: center;
+	border: none;
+	outline: 1px solid #CCCCCCCC;
+}
+#add-user .radio {
+	display: flex;
+	align-items: center;
+}
+#add-user form button {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	border: none;
+	outline: 1px solid #CCCCCCCC;
+	font-size: 1.5rem;
+	background-color: #333333;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+#add-user form button:hover {
+	background-color: #FFFFFF;
+	color: #333333;
+}
+#add-user table {
+	width: 65%;
+}
+#add-use tr{
+	height: 50px;
+}
+td button {
+	width: 50%;
+	height: 100%;
+}
+/*
+
+CREATE QUESTIONS
+
+*/
+section#create-questions {
+	background-color: #FAFAFA;
+	height: 100vh;
+	width: 100%;
+}
+section#create-questions h1 {
+	text-align: center;
+}
+section#create-questions .questions {
+	display: flex;
+	justify-content: space-between;
+}
+section#create-questions .ieq,.fq {
+	height: 50vh;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 10px;
+}
+section#create-questions form {
+	display: inherit;
+	flex-direction: inherit;
+	justify-content: inherit;
+	height: 100%;
+	width: 50%;
+}
+#create-questions form  div {
+	width: 90%;
+	height: 15%;
+	border-radius: 5px;
+	border: 1px solid #000000;
+	padding: 2px;
+	margin: 5px;
+}
+#create-questions form input {
+	height: 99%;
+	width: 99%;
+	text-align: center;
+	border: none;
+	outline: 1px solid #CCCCCCCC;
+}
+.question-btns {
+	display:flex;
+	justify-content: space-between; 
+}
+#create-questions form button {
+	height: 100%;
+	text-align: center;
+	border: none;
+	outline: 1px solid #CCCCCCCC;
+	font-size: 1.5rem;
+	background-color: #333333;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+.btn-more {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	padding: 10px;
+}
+#create-questions button:hover{
+	background-color: #FFFFFF;
+	color: #000000;
+}
+.question-submit-btn {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 10px;
+}
+
+#generate-exam {
+	height: 100vh;
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+}
+#generate-exam .exam-specs {
+	display: inherit;
+	flex-direction: column;
+}
+#generate-exam form {
+	display: inherit;
+	flex-direction: inherit;
+}
+#generate-exam form div {
+	display: inherit;
+	flex-direction: inherit;
+	padding: 10px;
+}
+#generate-exam form div input,select {
+	height: 58px;
+	width: 216px;
+}
+#generate-exam form div button {
+	height: 58px;
+	text-align: center;
+	border: none;
+	outline: 1px solid #CCCCCCCC;
+	font-size: 1.5rem;
+	background-color: #333333;
+	color: #FFFFFF;
+	cursor: pointer;
+	border-radius: 10px;
+}
+#generate-exam form div button:hover {
+	background-color: #FFFFFF;
+	color: #333333;
+}
