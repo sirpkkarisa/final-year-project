@@ -92,7 +92,6 @@ section.login-section .login-btn-div {
 	height: 40px;
 	width: 100%;
 	margin-top: 20px;
-	cursor: pointer;
 }
 section.login-section button {
 	border: none;
@@ -101,9 +100,8 @@ section.login-section button {
 	background-color: #333333;
 	width: 50%;
 	height: 100%;
-	cursor: pointer;
 }
-section.login-section button:hover {
+section.login-section .btn-hover:hover {
 	color: #333333;
 	background-color: #FFFFFF;
 	width: 50%;
@@ -121,60 +119,60 @@ section.login-section a#change-pass-btn {
 /*
 
 
-ADMIN SECTION STYLING
+user SECTION STYLING
 
 
 */
 
-section.admin-section {
+section.user-section {
 	width: 100%;
 	height: 100vh;
 }
-section.admin-section .admin-hero {
+section.user-section .user-hero {
 	height: 100%;
 	height: 100%;
 	background-color: #FAFAFA;
 }
-section.admin-section header {
+section.user-section header {
 	width:100%;
 	height:20%;
 }
-section.admin-section header div {
+section.user-section header div {
 	display: flex;
 	justify-content: space-between;
 	height: 50%;
 }
-section.admin-section nav {
+section.user-section nav {
 	background-color: #000000;
 	height: 50%;
 }
-section.admin-section ul {
+section.user-section ul {
 	width: 100%;
 	height: 100%;
 	list-style: none;
 	display: flex;
 	justify-content: space-between;
 }
-section.admin-section li {
+section.user-section li {
 	padding: 12px;
 	padding-left: 35px;
 	padding-right: 35px;
 }
-section.admin-section li:hover {
+section.user-section li:hover {
 	background-color: #FFFFFF;
 	padding: 12px;
 	padding-left: 35px;
 	padding-right: 35px;
 }
-section.admin-section a {
+section.user-section a {
 	color: #FFFFFF;
 	text-decoration: none;
 	height: 100%;
 }
-section.admin-section a:hover {
+section.user-section a:hover {
 	color: #000000;
 }
-section.admin-section .summary-section {
+section.user-section .summary-section {
 	height: 80%;
 	width: 100%;
 	display: grid;
@@ -323,30 +321,30 @@ section#create-questions form {
 	padding: 10px;
 }
 
-#generate-exam {
+#generate-exam,#student-generate-exam {
 	height: 100vh;
 	width:100%;
 	display: flex;
 	justify-content: space-between;
 }
-#generate-exam .exam-specs {
+#generate-exam,#student-generate-exam .exam-specs {
 	display: inherit;
 	flex-direction: column;
 }
-#generate-exam form {
+#generate-exam,#student-generate-exam form {
 	display: inherit;
 	flex-direction: inherit;
 }
-#generate-exam form div {
+#generate-exam,#student-generate-exam form div {
 	display: inherit;
 	flex-direction: inherit;
 	padding: 10px;
 }
-#generate-exam form div input,select {
+#generate-exam,#student-generate-exam form div input,select {
 	height: 58px;
 	width: 216px;
 }
-#generate-exam form div button {
+#generate-exam,#student-generate-exam form div button {
 	height: 58px;
 	text-align: center;
 	border: none;
@@ -357,7 +355,24 @@ section#create-questions form {
 	cursor: pointer;
 	border-radius: 10px;
 }
-#generate-exam form div button:hover {
+#generate-exam,#student-generate-exam form div button:hover {
 	background-color: #FFFFFF;
 	color: #333333;
+}
+
+
+/*
+
+STUDENT SECTION
+*/
+.student-div .summary-section {
+	height: 80%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.student-div .summary-section div {
+	width: 500px;
+	height:500px;
 }

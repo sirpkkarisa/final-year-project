@@ -8,7 +8,7 @@
 	<!-- This is the landing page for the system -->
 	<main>
 		<!-- Login Section -->
-		<section class="login-section" hidden="">
+		<section class="login-section">
 			<!-- Header for the login section -->
 			<header>
 				<!-- Title for the system -->
@@ -26,21 +26,21 @@
 			<div class="hero-section">
 				<!-- Login Form -->
 				<form id="login-form">
-					<div class="inputs"><input type="text" name="username" placeholder="E-mail/Username"><input type="password" name="password" placeholder="Password"></div>
-					<div class="login-btn-div"><button type="submit">LOGIN</button></div>
+					<div class="inputs"><input type="text" name="username" placeholder="E-mail/Username" required><input type="password" name="password" placeholder="Password" required></div>
+					<div class="login-btn-div"><button type="submit" name="loginbtn" disabled>LOGIN</button></div>
 					<a href="#" id="change-pass-btn">Change Password</a>
 				</form>
 			</div>
 		</section>
-		<!-- Admin Section -->
-		<section class="admin-section">
-			<div class="admin-hero">
+		<!-- user Section -->
+		<div hidden id="user-section">
+		<section class="user-section">
+			<div class="user-hero">
 				<!-- Header section -->
 				<header>
 					<div>
 						<span>Admin Panel</span>
-						<span id="admin-username">
-							@sirpkkarisa
+						<span id="user-username">
 						</span>
 					</div>
 					<nav>
@@ -184,30 +184,87 @@
 		</section>
 		<section id="generate-exam">
 			<div class="exam-specs">
-			<h1>Exam Specifications</h1>
-			<form id="exam-specification">
+				<h1>Exam Specifications</h1>
+				<form id="exam-specification">
+					<div>
+					<input type="text" name="institution-name" placeholder="INSTITUTION NAME">
+					<input type="text" name="degree-name" placeholder="DEGREE NAME">
+					<input type="text" name="year-examined" placeholder="YEAR BEING EXAMINED">
+					<input type="text" name="academic-year" placeholder="ACADEMIC YEAR">
+					<input type="text" name="course-code" placeholder="COURSE CODE">
+					<input type="text" name="duration" placeholder="DURATION">
+					<input type="number" name="num-of-modules" placeholder="NO. OF MODULES">
+					<input type="number" name="module-weight" placeholder="MODULE WEIGHT">
+					<select>
+						<option>Option One</option>
+						<option>Option Two</option>
+						<option>Option Three</option>
+					</select>
+				</div>
 				<div>
-				<input type="text" name="institution-name" placeholder="INSTITUTION NAME">
-				<input type="text" name="degree-name" placeholder="DEGREE NAME">
-				<input type="text" name="year-examined" placeholder="YEAR BEING EXAMINED">
-				<input type="text" name="academic-year" placeholder="ACADEMIC YEAR">
-				<input type="text" name="course-code" placeholder="COURSE CODE">
-				<input type="text" name="duration" placeholder="DURATION">
-				<input type="number" name="num-of-modules" placeholder="NO. OF MODULES">
-				<input type="number" name="module-weight" placeholder="MODULE WEIGHT">
-				<select>
-					<option>Option One</option>
-					<option>Option Two</option>
-					<option>Option Three</option>
-				</select>
+					<button id="preview">Preview</button>
+				</div>
+				</form>
 			</div>
-			<div>
-				<button id="preview">Preview</button>
-			</div>
-			</form>
-		</div>
-		<div class="exam-preview"></div>
+			<div class="exam-preview"></div>
 		</section>
+	</div>
+	<div class="student-div" hidden>
+		<section class="user-section">
+			<div class="user-hero">
+				<!-- Header section -->
+				<header>
+					<div>
+						<span>Student Panel</span>
+						<span id="student-username">
+							@sirpkkarisa
+						</span>
+					</div>
+					<nav>
+						<ul>
+							<li><a href="#">DASHBOARD</a></li>
+							<li><a href="#student-generate-exam">GENERATE EXAM</a></li>
+						</ul>
+					</nav>
+				</header>
+				<div class="summary-section">
+					<div>Graph One</div>
+				</div>
+			</div>
+		</section>
+		<section id="student-generate-exam">
+			<div class="exam-specs">
+				<h1>Exam Specifications</h1>
+				<form id="exam-specification">
+					<div>
+					<input type="text" name="institution-name" placeholder="INSTITUTION NAME">
+					<input type="text" name="degree-name" placeholder="DEGREE NAME">
+					<input type="text" name="year-examined" placeholder="YEAR BEING EXAMINED">
+					<input type="text" name="academic-year" placeholder="ACADEMIC YEAR">
+					<input type="text" name="course-code" placeholder="COURSE CODE">
+					<input type="text" name="duration" placeholder="DURATION">
+					<input type="number" name="num-of-modules" placeholder="NO. OF MODULES">
+					<input type="number" name="module-weight" placeholder="MODULE WEIGHT">
+					<select>
+						<option>Option One</option>
+						<option>Option Two</option>
+						<option>Option Three</option>
+					</select>
+				</div>
+				<div>
+					<button id="preview">Preview</button>
+				</div>
+				</form>
+			</div>
+			<div class="exam-preview"></div>
+		</section>
+	</div>
 	</main>
+	<script src="/js/initialize.js"></script>
+	<script type="text/javascript" src="/controllers/checks.js"></script>
+	<script type="text/javascript" src="/views/entrypoint.js"></script>
+	<script type="text/javascript" src="/controllers/constraints.js"></script>
+	<script type="text/javascript" src="/models/Models.js"></script>
+
 </body>
 </html>

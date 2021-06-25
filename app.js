@@ -16,8 +16,18 @@ app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname,'public')));
 app.use('/js', express.static(path.resolve('public/src/js/')));
+app.use('/views', express.static(path.resolve('public/src/js/views/')));
+app.use('/controllers', express.static(path.resolve('public/src/js/controllers/')));
+app.use('/models', express.static(path.resolve('public/src/js/models/')));
 app.use('/css', express.static(path.resolve('public/css/')));
 app.use('/resources', express.static(path.resolve('public/src/resources/')));
 
+app.use('/auth', (req, res) => {
+  res.status(201)
+    .json({
+      status: 'success',
+      data: req.body
+    })
+})
 
 module.exports = app;
