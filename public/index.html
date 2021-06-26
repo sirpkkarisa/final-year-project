@@ -53,20 +53,12 @@
 					</nav>
 				</header>
 				<div class="summary-section">
-					<div>Graph One</div>
-					<div>Graph Two</div>
-					<div>Graph Three</div>
-					<div>Graph Four</div>
-					<div>Graph Five</div>
-					<div>Graph Six</div>
-					<div>Graph Seven</div>
-					<div>Grapj Eight</div>
 				</div>
 			</div>
 		</section>
 		<!-- Add User section -->
 		<section id="add-user">
-			<form>
+			<form id="new-user-form">
 				<div>
 					<input type="text" placeholder="First Name" name="first-name">
 				</div>
@@ -84,7 +76,7 @@
 					 Lecturer<input type="radio" name="radio">
 				</div>
 				<div>
-					<button>Submit</button>
+					<button name="add-newuser">Submit</button>
 				</div>
 			</form>
 			<table>
@@ -97,30 +89,6 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Pascal Kazungu</td>
-						<td>pk@gmai.com</td>
-						<td>Lecturer</td>
-						<td>Active</td>
-					</tr>
-					<tr>
-						<td>Pascal Kazungu</td>
-						<td>pk@gmai.com</td>
-						<td>Lecturer</td>
-						<td>Active</td>
-					</tr>
-					<tr>
-						<td>Pascal Kazungu</td>
-						<td>pk@gmai.com</td>
-						<td>Lecturer</td>
-						<td>Active</td>
-					</tr>
-					<tr>
-						<td>Pascal Kazungu</td>
-						<td>pk@gmai.com</td>
-						<td>Lecturer</td>
-						<td>Active</td>
-					</tr>
 				</tbody>
 			</table>
 		</section>
@@ -260,6 +228,7 @@
 		</section>
 	</div>
 	</main>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script src="/js/initialize.js"></script>
 	<script type="text/javascript" src="/controllers/checks.js"></script>
 	<script type="text/javascript" src="/views/entrypoint.js"></script>
