@@ -167,6 +167,177 @@ main.views.addUser = {
     }
 };
 
+main.views.generateExam = {
+    setupUserInterface: function() {
+        const formEl = document.forms['exam-specification'];
+
+        formEl.addEventListener('submit',
+            main.views.generateExam.handlePreviewEvent
+        );
+    },
+    handlePreviewEvent: function(evt) {
+        evt.preventDefault();
+
+        const formEl = document.forms['exam-specification'];
+        const examPaperDetails = {
+            instutionName: formEl['institution-name'].value,
+            degreeName: formEl['degree-name'].value,
+            yearExamined: formEl['year-examined'].value,
+            academicYear: formEl['academic-year'].value,
+            courseCode: formEl['course-code'].value,
+            courseName: formEl['course-name'].value,
+            duration: formEl['duration'].value,
+            instructions: formEl['instructions'].value,
+            numOfModules: formEl['num-of-modules'].value,
+            moduleWeight: formEl['module-weight'].value,
+            compulsoryModule: 'Option one',
+        }
+        const examination = new Examination();
+        examination.sendExamSpecs(
+            {
+                degreeName: examPaperDetails.degreeName,
+                courseName: examPaperDetails.courseName,
+                numOfModules: examPaperDetails.numOfModules,
+                moduleWeight: examPaperDetails.moduleWeight,
+                compulsoryModule: examPaperDetails.compulsoryModule
+            },
+            '/auth/examination'
+            );
+        document.querySelector('#preview-window').removeAttribute('hidden');
+
+        main.views.generateExam.handleExampaperUI(examPaperDetails);
+        document.querySelector('#download-btn').addEventListener('click', 
+            main.views.generateExam.convertPaperToPDF
+        );
+    },
+    displayExamQuestions: function(questions) {
+        console.log(questions)
+        const html = `
+                    <div class="exam-paper" id="elementH">
+                    <h1>INSTRUCTIONS:</h1>
+                    <ul>
+                        <li>Answer question <strong>ONE</strong> and any other <strong>TWO</strong> from section B</li>
+                    </ul>
+                    <h1>SECTION A(30 MARKS)</h1>
+                    <ol>
+                        <li>${questions[0].question[0]}</li>
+                        <li>${questions[1].question[0]}
+                            <ul>
+                                <li>${questions[1].question[1].subquestions[0]}</li>
+                                <li>${questions[1].question[1].subquestions[1]}</li>
+                                <li>${questions[1].question[1].subquestions[2]}</li>
+                            </ul>
+                        </li>
+                        <li>
+                        ${questions[2].question[0]}
+                            <ul>
+                                <li>${questions[2].question[1].subquestions[0]}</li>
+                                <li>${questions[2].question[1].subquestions[1]}</li>
+                                <li>${questions[2].question[1].subquestions[2]}</li>
+                                <li>${questions[2].question[1].subquestions[0]}</li>
+                            </ul>
+                        </li>
+                        <li>${questions[3].question[0]}</li>
+                    </ol>
+
+                </div>
+                <div class="exam-paper" id="elementH2">
+                    <h1>SECTION B(40 MARKS)</h1>
+                    <br>
+                    <h2>QUESTION TWO (20 MARKS)</h2>
+                    <ol>
+                        <li>
+                        ${questions[4].question[0]}
+                            <ul>
+                                <li>${questions[4].question[1].subquestions[0]}</li>
+                                <li>${questions[4].question[1].subquestions[1]}</li>
+                                <li>${questions[4].question[1].subquestions[2]}</li>
+                                <li>${questions[4].question[1].subquestions[3]}</li>
+                                <li>${questions[4].question[1].subquestions[4]}</li>
+                            </ul>
+                        </li>
+                        <li>${questions[5].question[0]}</li>
+                        <li>${questions[6].question[0]}</li>
+                    </ol>
+                    <h2>QUESTION THREE (20 MARKS)</h2>
+                    <ol>
+                        <li>${questions[7].question[0]}</li>
+                        <li>${questions[8].question[0]}</li>
+                        <li>${questions[9].question[0]}</li>
+                        <li>${questions[10].question[0]}</li>
+                    </ol>
+                    <h2>QUESTION FOUR(20 MARKS)</h2>
+                    <ol>
+                        <li>
+                        ${questions[11].question[0]}
+                            <ul>
+                                <li>${questions[11].question[1].subquestions[0]}</li>
+                                <li>${questions[11].question[1].subquestions[1]}</li>
+                                <li>${questions[11].question[1].subquestions[2]}</li>
+                                <li>${questions[11].question[1].subquestions[3]}</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>${questions[12].question[0]}</li>
+                    </ol>
+                </div>
+                    `;
+        document.querySelector('#questions').innerHTML = html;
+    },
+    handleExampaperUI: function(details){
+        const {
+            instutionName,
+            degreeName,
+            yearExamined,
+            academicYear,
+            courseCode,
+            courseName,
+            duration,
+            instructions,
+        } = details
+        const html = `<div class="bunner" style="display: flex;">
+                        <h1>${instutionName.split(' ')[0]}</h1>
+                        <img src="/resources/favicon.png" alt="Badge">
+                        <h1 style="color: #E31A1C;">${instutionName.split(' ')[1]}</h1>
+                    </div>
+                    <div class="title">
+                        <h2>${instutionName.split(' ')[1]}EXAMINATION  1ST SEMESTER ${academicYear} ACADEMIC YEAR</h2>
+                    </div>
+                    <div class="degree-details">YEAR ${yearExamined} EXAMINATION FOR THE DEGREE OF BACHELOR OF ${degreeName}</div>
+                    <div class="course-details">
+                        <h3 style="text-decoration:underline;text-align: center;"> ${courseCode}: ${courseName} </h3>
+                    </div>
+                    <div class="stream-duration">
+                        <span>STREAM: R</span>
+                        <span>TIME: ${duration}HRS</span>
+                    </div>
+                    <div class="day-date">
+                        <span>DAY: TUESDAY[8:30 - 10:30]</span>
+                        <span>DATE: 25/05/2021</span>
+                    </div>
+                    <div class="instruction">
+                        <p>THIS QUESTION PAPER CONSISTS OF FOUR(4) PAGES</p>
+                        <p>${instructions}</p>
+                    </div>
+                    <div class="footer">
+                        <img src="/resources/footer.png" alt="Footer">
+                    </div>`;
+        document.querySelector('#my-pdf').innerHTML = html;
+    },
+    convertPaperToPDF: function() {
+        var doc = new jsPDF();
+            
+        doc.addHTML(document.querySelector('.exam-paper'), function(){
+            doc.addPage();
+            doc.fromHTML(document.querySelector('#elementH'), 15, 15,{width:170});
+            doc.addPage();
+            doc.fromHTML(document.querySelector('#elementH2'), 15, 15,{width:170});
+            doc.save('test.pdf');
+        });
+    }
+};
+
 
 main.views.login.setupUserInterface();
 main.views.addUser.setupUserInterface();
+main.views.generateExam.setupUserInterface();

@@ -155,14 +155,16 @@
 				<h1>Exam Specifications</h1>
 				<form id="exam-specification">
 					<div class="inputs-div">
-					<input type="text" name="institution-name" placeholder="INSTITUTION NAME">
-					<input type="text" name="degree-name" placeholder="DEGREE NAME">
-					<input type="text" name="year-examined" placeholder="YEAR BEING EXAMINED">
-					<input type="text" name="academic-year" placeholder="ACADEMIC YEAR">
-					<input type="text" name="course-code" placeholder="COURSE CODE">
-					<input type="text" name="duration" placeholder="DURATION">
-					<input type="number" name="num-of-modules" placeholder="NO. OF MODULES">
-					<input type="number" name="module-weight" placeholder="MODULE WEIGHT">
+					<input type="text" name="institution-name" placeholder="INSTITUTION NAME" required>
+					<input type="text" name="degree-name" placeholder="DEGREE NAME" required>
+					<input type="text" name="year-examined" placeholder="YEAR BEING EXAMINED" required>
+					<input type="text" name="academic-year" placeholder="ACADEMIC YEAR" required>
+					<input type="text" name="course-name" placeholder="COURSE NAME" required>
+					<input type="text" name="course-code" placeholder="COURSE CODE" required>
+					<input type="text" name="duration" placeholder="DURATION" required>
+					<input type="text" name="instructions" placeholder="INSTRUCTIONS" required>
+					<input type="number" name="num-of-modules" placeholder="NO. OF MODULES" required>
+					<input type="number" name="module-weight" placeholder="MODULE WEIGHT" required>
 					<select>
 						<option>Option One</option>
 						<option>Option Two</option>
@@ -175,36 +177,12 @@
 				</form>
 			</div>
 			<div class="exam-preview">
+				<div id="preview-window" hidden>
+				<button id="download-btn">Dowload</button>
 				<div class="exam-paper" id="my-pdf">
-					<div class="bunner" style="display: flex;">
-						<h1>LAIKIPIA</h1>
-						<img src="/resources/favicon.png" alt="Badge">
-						<h1 style="color: #E31A1C;">UNIVERSITY</h1>
-					</div>
-					<div class="title">
-						<h2>UNIVERSITY EXAMINATION  1ST SEMESTER 2020/2021 ACADEMIC YEAR</h2>
-					</div>
-					<div class="degree-details">FORTH YEAR EXAMINATION FOR THE DEGREE OF BACHELOR OF SCIENCE(STATISTICS)</div>
-					<div class="course-details">
-						<h3 style="text-decoration:underline;text-align: center;">COMP 412: MANAGEMENT INFORMATION SYSTEM</h3>
-					</div>
-					<div class="stream-duration">
-						<span>STREAM: R</span>
-						<span>TIME: 2HRS</span>
-					</div>
-					<div class="day-date">
-						<span>DAY: TUESDAY[8:30 - 10:30]</span>
-						<span>DATE: 25/05/2021</span>
-					</div>
-					<div class="instruction">
-						<p>THIS QUESTION PAPER CONSISTS OF FOUR(4) PAGES</p>
-						<p>PLEASE DO NOT OPEN UNTIL THE INVIGILATOR SAYS SO</p>
-					</div>
-					<div class="footer">
-						<img src="/resources/footer.png" alt="Footer">
-					</div>
 				</div>
-				<div id="elementH"></div>
+				<div id="questions"></div>
+				</div>
 			</div>
 		</section>
 	</div>
@@ -262,28 +240,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" integrity="sha512-1g3IT1FdbHZKcBVZzlk4a4m5zLRuBjMFMxub1FeIRvR+rhfqHFld9VFXXBYe66ldBWf+syHHxoZEbZyunH6Idg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" integrity="sha512-s/XK4vYVXTGeUSv4bRPOuxSDmDlTedEpMEcAQk0t/FMd9V6ft8iXdwSBxV0eD60c6w/tjotSlKu9J2AAW1ckTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js" integrity="sha512-jzL0FvPiDtXef2o2XZJWgaEpVAihqquZT/tT89qCVaxVuHwJ/1DFcJ+8TBMXplSJXE8gLbVAUv+Lj20qHpGx+A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 	<script src="/js/initialize.js"></script>
 	<script type="text/javascript" src="/controllers/checks.js"></script>
 	<script type="text/javascript" src="/views/entrypoint.js"></script>
 	<script type="text/javascript" src="/controllers/constraints.js"></script>
 	<script type="text/javascript" src="/models/Models.js"></script>
-	<script>
-			function convertPaperToPDF() {
-				html2canvas(document.querySelector('.exam-paper'), {
-					allowTaint:false,
-					useCORS:true,
-					scale:1,
-					onrendered: function (cv) {
-						var doc = new jsPDF();
-						var img = cv.toDataURL('image/png');
-						doc.addImage(img,'PNG',0,0,210,300);
-						doc.save('Exam_Paper.pdf');
-					}
-				});
-			}
-			document.querySelector('#preview').addEventListener('click', convertPaperToPDF)
-	</script>
+
 </body>
 </html>

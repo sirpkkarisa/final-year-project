@@ -80,3 +80,16 @@ class AdminSummary extends MainClass {
           return data;
     }
 }
+
+class Examination extends MainClass {
+    constructor() {
+        super();
+    }
+    sendExamSpecs(data, path) {
+        this.ajaxPostRequest(data, path, this.examQuestions);
+    }
+    examQuestions(response) {
+        const { data } = JSON.parse(response);
+        main.views.generateExam.displayExamQuestions(data);
+    }
+}

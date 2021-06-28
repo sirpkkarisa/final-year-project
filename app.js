@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const {
+  users, 
+  questions
+} = require('./server/models/Models');
+
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,38 +34,13 @@ app.use('/auth/login', (req, res) => {
       data: req.body
     })
 });
-const user = [
-  {
-    name: 'Pascal Kazungu',
-    email: 'pk@yahoo.com',
-    type: 'lecturer',
-    status: 'active'
-  },
-  {
-    name: 'Pascal Karisa',
-    email: 'pkk@yahoo.com',
-    type: 'student',
-    status: 'active'
-  },
-  {
-    name: 'Karisa Kazungu',
-    email: 'kk@yahoo.com',
-    type: 'lecturer',
-    status: 'inactive'
-  },
-  {
-    name: 'Gustavo Pablo',
-    email: 'gp@yahoo.com',
-    type: 'student',
-    status: 'active'
-  }
-]
+
 app.use('/auth/all', (req, res) => {
 
-  res.status(201)
+  res.status(200)
     .json({
       status: 'success',
-      data: user
+      data: users
     })
 });
 app.use('/auth/add-user', (req, res) => {
@@ -70,5 +50,11 @@ app.use('/auth/add-user', (req, res) => {
       message: 'User successfully added'
     })
 });
-
+app.use('/auth/examination', (req, res) => {
+  res.status(200)
+  .json({
+    status: 'success',
+    data: questions,
+  })
+});
 module.exports = app;

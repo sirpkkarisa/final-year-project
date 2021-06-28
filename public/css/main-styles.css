@@ -355,7 +355,7 @@ section#create-questions form {
 	padding: 20px;
 }
 .exam-paper {
-	height: 90%;
+	height: auto;
 	width: 80%;
 	background-color: #FFFFFF;
 	border: 1px solid #CCCCCCCC;
@@ -453,4 +453,51 @@ STUDENT SECTION
 .student-div .summary-section div {
 	width: 500px;
 	height:500px;
+}
+
+@media print {
+	.exam-paper *{
+		height: auto;
+		width: 80%;
+		background-color: #FFFFFF;
+		border: 1px solid #CCCCCCCC;
+		padding: 10px;
+	}
+	.exam-paper .bunner *{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	
+	.exam-paper .bunner h1 {
+		font-size: 2.5rem;
+	}
+	.exam-paper .bunner img {
+		height: 5rem;
+	}
+	.exam-paper .title h2 {
+		width: 80%;
+		height: 20%;
+		margin: 20px;
+		text-align: center;
+	}
+	.exam-paper .degree-details, .exam-paper .course-details {
+		/* width: 80%; */
+		height: 20%;
+		text-align: center;
+	}
+	.exam-paper .stream-duration, .exam-paper .day-date {
+		display: flex;
+		justify-content: space-between;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.exam-paper p {
+		padding-left: 30px;
+		margin-top: 5px;
+	}
+	.exam-paper .footer img {
+		width: 100%;
+		margin-top: 20px;
+	}
 }
