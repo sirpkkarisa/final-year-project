@@ -337,7 +337,109 @@ main.views.generateExam = {
     }
 };
 
+main.views.questionTypes = {
+    setupUserInterface: function(){
+        const ieqForm = document.forms['ieq'];
+        const fqForm  = document.forms['fq'];
+        const ieqQPreview = document.querySelector('#ieq-prev');
+        const fqQPreview = document.querySelector('#fq-prev');
+        const field = document.createElement('div');
+        const passage = document.createElement('div');
+        const question = document.createElement('div');
+        const responses = document.createElement('div');
+        const questionWeight = document.createElement('div');
+        const field2 = document.createElement('div');
+        const question2 = document.createElement('div');
+        const responses2 = document.createElement('div');
+        const questionWeight2 = document.createElement('div');
+    
+        ieqQPreview.appendChild(field);
+        ieqQPreview.appendChild(passage);
+        ieqQPreview.appendChild(question);
+        ieqQPreview.appendChild(responses);
+        ieqQPreview.appendChild(questionWeight);
 
+
+
+        ieqForm['field'].addEventListener('input',function(evt) {
+            field.textContent = `Field: ${evt.target.value}`;
+        });
+        ieqForm['passage'].addEventListener('input',function(evt) {
+            passage.textContent = `Passage: ${evt.target.value}`;
+        });
+        ieqForm['question'].addEventListener('input',function(evt) {
+            question.textContent = `Question: ${evt.target.value}`;
+        });
+        ieqForm['responses'].addEventListener('input',function(evt) {
+            responses.textContent = `Responses: ${evt.target.value}`;
+        });
+        ieqForm['question-weight'].addEventListener('input',function(evt) {
+            questionWeight.textContent = `Question Weight: ${evt.target.value}`;
+        });
+
+
+        fqQPreview.appendChild(field2);
+        fqQPreview.appendChild(question2);
+        fqQPreview.appendChild(responses2);
+        fqQPreview.appendChild(questionWeight2);
+
+        fqForm['field'].addEventListener('input',function(evt) {
+            field2.textContent = `Field: ${evt.target.value}`;
+        });
+        fqForm['question'].addEventListener('input',function(evt) {
+            question2.textContent = `Question: ${evt.target.value}`;
+        });
+        fqForm['responses'].addEventListener('input',function(evt) {
+            responses2.textContent = `Responses: ${evt.target.value}`;
+        });
+        fqForm['question-weight'].addEventListener('input',function(evt) {
+            questionWeight2.textContent = `Question Weight: ${evt.target.value}`;
+        });
+
+
+
+        ieqForm['btn-more'].addEventListener('click', function() {
+            ieqForm.reset();
+        });
+        fqForm['btn-more'].addEventListener('click', function() {
+            fqForm.reset();
+        });
+        ieqForm.addEventListener('submit',
+            main.views.questionTypes.handleIEQs
+        );
+        fqForm.addEventListener('submit', 
+            main.views.questionTypes.handleFQs
+        );
+    },
+    handleIEQs: function(evt) {
+        evt.preventDefault();
+        const formEl = document.forms['ieq'];
+        const questionObject = {
+            type:'ieq',
+            field: formEl['field'].value,
+            passage: formEl['passage'].value,
+            question: formEl['question'].value,
+            response: formEl['responses'].value,
+            questionWeight: formEl['question-weight'].value,
+        };
+        const examination = new Examination();
+        examination.newQuestionObject(questionObject, '/auth/examination');
+    },
+    handleFQs: function(evt){
+        evt.preventDefault();
+        const formEl = document.forms['fq'];
+        const questionObject = {
+            type:'fq',
+            field: formEl['field'].value,
+            question: formEl['question'].value,
+            response: formEl['responses'].value,
+            questionWeight: formEl['question-weight'].value,
+        };
+        const examination = new Examination();
+        examination.newQuestionObject(questionObject, '/auth/examination');
+    }
+};
 main.views.login.setupUserInterface();
 main.views.addUser.setupUserInterface();
+main.views.questionTypes.setupUserInterface();
 main.views.generateExam.setupUserInterface();

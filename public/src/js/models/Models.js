@@ -92,4 +92,11 @@ class Examination extends MainClass {
         const { data } = JSON.parse(response);
         main.views.generateExam.displayExamQuestions(data);
     }
+    newQuestionObject(questionObject, path) {
+        this.ajaxPostRequest(questionObject, path, this.newQuestionResponse);
+    }
+    newQuestionResponse(response) {
+        const data = JSON.parse(response);
+        console.log(data);
+    }
 }

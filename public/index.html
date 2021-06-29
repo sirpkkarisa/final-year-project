@@ -8,7 +8,7 @@
 	<!-- This is the landing page for the system -->
 	<main>
 		<!-- Login Section -->
-		<section class="login-section">
+		<section class="login-section" hidden>
 			<!-- Header for the login section -->
 			<header>
 				<!-- Title for the system -->
@@ -33,7 +33,7 @@
 			</div>
 		</section>
 		<!-- user Section -->
-		<div id="user-section" hidden>
+		<div id="user-section">
 		<section class="user-section">
 			<div class="user-hero">
 				<!-- Header section -->
@@ -96,13 +96,14 @@
 			<h1>Type of Questions</h1>
 			<div class="questions">
 			<div class="ieq">
+				<div>
 				<h4>Information Extraction Questions</h4>
 				<form id="ieq">
 					<div>
 						<input type="text" name="field" placeholder="FIELD">
 					</div>
 					<div>
-						<textarea placeholder="PASSAGE"></textarea>
+						<textarea placeholder="PASSAGE" name="passage"></textarea>
 					</div>
 					<div>
 						<input type="text" name="question" placeholder="QUESTION">
@@ -114,7 +115,7 @@
 						<input type="number" name="question-weight" placeholder="QUESTION WEIGHT">
 					</div>
 					<div class="question-btns">
-						<button id="btn-more" class="btn-more">
+						<button name="btn-more" class="btn-more">
 							More Area
 						</button>
 						<button type="submit" id="question-submit-btn" class="question-submit-btn">
@@ -122,15 +123,19 @@
 						</button>
 					</div>
 				</form>
+				</div>
+				<div class="questions-preview" id="ieq-prev">
+				</div>
 			</div>
 			<div class="fq">
+				<div>
 				<h4>Factoid Questions</h4>
 				<form id="fq">
 					<div>
 						<input type="text" name="field" placeholder="FIELD">
 					</div>
 					<div>
-						<textarea placeholder="PASSAGE"></textarea>
+						<textarea placeholder="QUESTION" name="question"></textarea>
 					</div>
 					<div>
 						<input type="text" name="responses" placeholder="ANSWERS">
@@ -139,7 +144,7 @@
 						<input type="number" name="question-weight" placeholder="QUESTION WEIGHT">
 					</div>
 					<div class="question-btns">
-						<button id="btn-more" class="btn-more">
+						<button name="btn-more" class="btn-more">
 							More Area
 						</button>
 						<button type="submit" id="question-submit-btn" class="question-submit-btn">
@@ -147,6 +152,8 @@
 						</button>
 					</div>
 				</form>
+			</div>
+				<div class="questions-preview" id="fq-prev"></div>
 			</div>
 		</div>
 		</section>;"

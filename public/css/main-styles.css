@@ -262,29 +262,31 @@ section#create-questions .questions {
 	display: flex;
 	justify-content: space-between;
 }
-section#create-questions .ieq,.fq {
+section#create-questions .ieq, section#create-questions .fq{
 	height: 50vh;
 	width: 50%;
 	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding: 5px;
+}
+ section#create-questions form {
+	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	padding: 10px;
-}
-section#create-questions form {
-	display: inherit;
-	flex-direction: inherit;
-	justify-content: inherit;
 	height: 100%;
-	width: 50%;
+	width: 49%;
 }
 #create-questions form  div {
-	width: 90%;
+	width: 300px;
+	min-width: 250px;
 	height: 15%;
 	border-radius: 5px;
 	border: 1px solid #000000;
 	padding: 2px;
 	margin: 5px;
 }
+
 #create-questions form input {
 	height: 99%;
 	width: 99%;
@@ -292,6 +294,7 @@ section#create-questions form {
 	border: none;
 	outline: 1px solid #CCCCCCCC;
 }
+
 .question-btns {
 	display:flex;
 	justify-content: space-between; 
@@ -311,6 +314,7 @@ section#create-questions form {
 	border-bottom-left-radius: 10px;
 	padding: 10px;
 }
+
 #create-questions button:hover{
 	background-color: #FFFFFF;
 	color: #000000;
@@ -319,7 +323,14 @@ section#create-questions form {
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	padding: 10px;
+} 
+
+.questions-preview {
+	overflow-y: scroll;
+	height: 80vh;
+	width: 25vw;
 }
+
 
 #generate-exam {
 	display: flex;
@@ -380,7 +391,6 @@ section#create-questions form {
 	text-align: center;
 }
 .exam-paper .degree-details, .exam-paper .course-details {
-	/* width: 80%; */
 	height: 20%;
 	text-align: center;
 }
