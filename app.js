@@ -1,13 +1,23 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
+const mongourl = process.env.MONGODB_URL;
 
 const app = express();
 
 const {
   users, 
-  questions
+  questions,
+  IEQ,
+  FQ
 } = require('./server/models/Models');
+mongoose.connect(mongourl)
+  .then(()=> console.log('Connection to mongodb Atlas is successful'))
+  .catch(err => console.log(err));
 
 
 app.use((req, res, next) => {
@@ -51,10 +61,60 @@ app.use('/auth/add-user', (req, res) => {
     })
 });
 app.use('/auth/examination', (req, res) => {
-  res.status(200)
-  .json({
-    status: 'success',
-    data: questions,
-  })
+  const { type } = req.body;
+  if (type === 'ieq') {
+    // do ieq staff here
+    const ieq = new IEQ({
+      field: req.body.field,
+      passage: req.body.passage,
+      questions: req.body.question,
+      responses: req.body.response,
+      questionWeight: req.body.questionWeight,
+    });
+
+    // Save the question
+    ieq.save()
+      .then(() => {
+        console.log('question added');
+        res.status(201)
+          .json({
+            message: 'Question Added!',
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+
+        res.status(400)
+          .json({
+            status: 'Error',
+            error: err,
+          })
+      });
+  } else {
+      const fq = new FQ({
+        field: req.body.field,
+        questions: req.body.question,
+        responses: req.body.response,
+        questionWeight: req.body.questionWeight,
+    });
+      fq.save()
+      .then(() => {
+        console.log('question added');
+
+        res.status(201)
+          .json({
+            message: 'Question Added!',
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+
+        res.status(400)
+          .json({
+            status: 'Error',
+            error: err,
+          })
+      });
+  }
 });
 module.exports = app;

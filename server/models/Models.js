@@ -1,3 +1,34 @@
+const mongoose = require('mongoose');
+
+const ieqSchema = mongoose.Schema({
+    field: {type: String, required: true},
+    passage: {type: String, required: true},
+    questions: {type: String, required: true},
+    responses: {type: String, required: true},
+    questionWeight: {type: Number, required: true},
+});
+
+const fqSchema = mongoose.Schema({
+    field: {type: String, required: true},
+    questions: {type: String, required: true},
+    responses: {type: String, required: true},
+    questionWeight: {type: Number, required: true},
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const users = [
     {
       name: 'Pascal Kazungu',
@@ -139,5 +170,9 @@ const questions = [
 
 module.exports = {
     users,
-    questions
-}
+    questions,
+    IEQ: mongoose.model('IEQ', ieqSchema),
+    FQ: mongoose.model('FQ', fqSchema)
+};
+// module.exports = mongoose.model('IEQ', ieqSchema);
+// module.exports = mongoose.model('FQ', fqSchema);
