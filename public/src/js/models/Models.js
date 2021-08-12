@@ -2,7 +2,7 @@ class MainClass {
     constructor(){
         this.xhr = null;
     }
-    ajaxGetRequest(path, callback) {
+    ajaxGetRequest(data=null,path, callback) {
         this.xhr = new XMLHttpRequest();
         this.xhr.onreadystatechange = function() {
             if(this.readyState === 4) {
@@ -12,7 +12,7 @@ class MainClass {
             }
         }
         this.xhr.open('GET',path)
-        this.xhr.send(null);
+        this.xhr.send(JSON.stringify(data));
     }
     ajaxPostRequest(data, path, callback) {
         this.xhr = new XMLHttpRequest();
@@ -86,7 +86,7 @@ class Examination extends MainClass {
         super();
     }
     sendExamSpecs(data, path) {
-        this.ajaxPostRequest(data, path, this.examQuestions);
+        this.ajaxGetRequest(data, path, this.examQuestions);
     }
     examQuestions(response) {
         const { data } = JSON.parse(response);

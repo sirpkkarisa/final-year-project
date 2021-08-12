@@ -201,7 +201,7 @@ main.views.generateExam = {
                 moduleWeight: examPaperDetails.moduleWeight,
                 compulsoryModule: examPaperDetails.compulsoryModule
             },
-            '/auth/examination'
+            '/auth/all-questions'
             );
         document.querySelector('#preview-window').removeAttribute('hidden');
 
@@ -212,7 +212,11 @@ main.views.generateExam = {
     },
     displayExamQuestions: function(questions) {
         console.log(questions)
-        const html = `
+        let html = '';
+        
+        questions.forEach(item => {
+
+                html += `
                     <div class="exam-paper" id="elementH">
                     <h1>INSTRUCTIONS:</h1>
                     <ul>
@@ -220,68 +224,11 @@ main.views.generateExam = {
                     </ul>
                     <h1>SECTION A(30 MARKS)</h1>
                     <ol>
-                        <li>${questions[0].question[0]}</li>
-                        <li>${questions[1].question[0]}
-                            <ul>
-                                <li>${questions[1].question[1].subquestions[0]}</li>
-                                <li>${questions[1].question[1].subquestions[1]}</li>
-                                <li>${questions[1].question[1].subquestions[2]}</li>
-                            </ul>
-                        </li>
-                        <li>
-                        ${questions[2].question[0]}
-                            <ul>
-                                <li>${questions[2].question[1].subquestions[0]}</li>
-                                <li>${questions[2].question[1].subquestions[1]}</li>
-                                <li>${questions[2].question[1].subquestions[2]}</li>
-                                <li>${questions[2].question[1].subquestions[0]}</li>
-                            </ul>
-                        </li>
-                        <li>${questions[3].question[0]}</li>
-                    </ol>
-
-                </div>
-                <div class="exam-paper" id="elementH2">
-                    <h1>SECTION B(40 MARKS)</h1>
-                    <br>
-                    <h2>QUESTION TWO (20 MARKS)</h2>
-                    <ol>
-                        <li>
-                        ${questions[4].question[0]}
-                            <ul>
-                                <li>${questions[4].question[1].subquestions[0]}</li>
-                                <li>${questions[4].question[1].subquestions[1]}</li>
-                                <li>${questions[4].question[1].subquestions[2]}</li>
-                                <li>${questions[4].question[1].subquestions[3]}</li>
-                                <li>${questions[4].question[1].subquestions[4]}</li>
-                            </ul>
-                        </li>
-                        <li>${questions[5].question[0]}</li>
-                        <li>${questions[6].question[0]}</li>
-                    </ol>
-                    <h2>QUESTION THREE (20 MARKS)</h2>
-                    <ol>
-                        <li>${questions[7].question[0]}</li>
-                        <li>${questions[8].question[0]}</li>
-                        <li>${questions[9].question[0]}</li>
-                        <li>${questions[10].question[0]}</li>
-                    </ol>
-                    <h2>QUESTION FOUR(20 MARKS)</h2>
-                    <ol>
-                        <li>
-                        ${questions[11].question[0]}
-                            <ul>
-                                <li>${questions[11].question[1].subquestions[0]}</li>
-                                <li>${questions[11].question[1].subquestions[1]}</li>
-                                <li>${questions[11].question[1].subquestions[2]}</li>
-                                <li>${questions[11].question[1].subquestions[3]}</li>
-                            </ul>
-                        </li>
-                        <br>
-                        <li>${questions[12].question[0]}</li>
+                        <li>${item['questions']}</li>
                     </ol>
                 </div>
                     `;
+        });
         document.querySelector('#questions').innerHTML = html;
     },
     handleExampaperUI: function(details){
@@ -423,7 +370,7 @@ main.views.questionTypes = {
             questionWeight: formEl['question-weight'].value,
         };
         const examination = new Examination();
-        examination.newQuestionObject(questionObject, '/auth/examination');
+        examination.newQuestionObject(questionObject, '/auth/questions');
     },
     handleFQs: function(evt){
         evt.preventDefault();
@@ -436,7 +383,7 @@ main.views.questionTypes = {
             questionWeight: formEl['question-weight'].value,
         };
         const examination = new Examination();
-        examination.newQuestionObject(questionObject, '/auth/examination');
+        examination.newQuestionObject(questionObject, '/auth/questions');
     }
 };
 main.views.login.setupUserInterface();

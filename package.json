@@ -17,9 +17,14 @@
   },
   "homepage": "https://github.com/sirpkkarisa/final-year-project#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.13.3"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.3",
+    "nodemailer": "^6.6.3",
+    "pg": "^8.7.1",
+    "uuid": "^8.3.2"
   }
 }
